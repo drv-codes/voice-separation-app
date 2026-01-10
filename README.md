@@ -45,12 +45,19 @@ This application automates that process by:
 
 voice-separation-app/
 ├── backend/
+
 │ ├── app/
+
 │ │ ├── main.py
+
 │ │ ├── diarization.py
+
 │ │ ├── audio_utils.py
+
 │ └── requirements.txt
+
 ├── frontend/
+
 └── README.md
 
 ---
@@ -106,7 +113,7 @@ This project uses the open-source **pyannote.audio** library for speaker diariza
 Built by **[Dhruv Sharma]**
 
 LinkedIn: *(www.linkedin.com/in/dhruv-sharma-4a9501393)*  
-GitHub: *(this profile)*
+GitHub: *(https://github.com/drv-codes)*
 
 ---
 
