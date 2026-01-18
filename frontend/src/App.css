@@ -503,24 +503,15 @@ nav {
   line-height: 1.5;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .features-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-  .max-w-container { padding: 0 20px; }
-  .hero-title { font-size: 3rem; }
-}
-
 /* =========================================
    MOBILE RESPONSIVENESS
    ========================================= */
 @media (max-width: 768px) {
   
-  /* Global Container */
   .max-w-container {
     padding: 0 20px;
   }
 
-  /* Navbar */
   nav {
     height: 70px;
   }
@@ -534,7 +525,6 @@ nav {
     font-size: 0.75rem;
   }
 
-  /* Hero Section */
   .hero-section {
     margin-top: 30px;
     margin-bottom: 30px;
@@ -548,13 +538,11 @@ nav {
     font-size: 1rem;
   }
 
-  /* Main Interface */
   .glass-panel {
     padding: 30px 20px;
     min-height: auto;
   }
 
-  /* Upload Area */
   .upload-area {
     height: 280px;
     background-size: cover;
@@ -569,7 +557,6 @@ nav {
     height: 70px;
   }
 
-  /* Results Dashboard */
   .loader-video-wrapper, 
   .results-header-video {
     width: 100%;
@@ -591,7 +578,6 @@ nav {
     height: 42px;
   }
 
-  /* Feature Grid (Stack vertically on mobile) */
   .features-grid {
     grid-template-columns: 1fr;
     gap: 20px;
