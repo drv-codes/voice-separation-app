@@ -89,7 +89,7 @@ const App = () => {
     setError(null);
     stopAudio();
 
-    // Simulated progress bar for UX
+    // Simulated progress bar for UX feedback
     const interval = setInterval(() => {
       setProgress(p => (p >= 90 ? 90 : p + 5));
     }, mode === 'music' ? 400 : 250);
@@ -113,7 +113,7 @@ const App = () => {
       clearInterval(interval);
       setProgress(100);
       
-      // Small delay to show 100%
+      // Short delay to allow progress bar to fill
       setTimeout(() => {
         setResults(data);
         setIsProcessing(false);
@@ -189,7 +189,6 @@ const App = () => {
                   transform: isDragOver ? 'scale(1.01)' : undefined
               }}
             >
-              {/* Note: Background animation is handled via CSS in .upload-area::before */}
               <div className="upload-content">
                 <input id="file-input" type="file" hidden accept="audio/*" onChange={e => {
                   if (e.target.files[0]) {
@@ -214,16 +213,16 @@ const App = () => {
             /* --- PROCESSING STATE --- */
             <div className="processing-state">
                <div className="loader-video-wrapper">
+                   {/* Hosted Video: ARYA AI Loader */}
                    <video
-                     src="/arya_img.mp4"
+                     src="https://2rjltiresrygcfqg.public.blob.vercel-storage.com/arya_img.mp4"
                      poster="/arya_poster.jpg"
                      className="loader-video"
                      autoPlay loop muted playsInline preload="auto"
                    />
-                   {/* Optional scan line can be added here if desired via CSS */}
                </div>
                
-               <h3 className="status-text">A.R.Y.A is Thinking...</h3>
+               <h3 className="status-text">Processing Audio...</h3>
                <p style={{color:'#D8BFD8', marginTop: '8px'}}>{file.name}</p>
                
                <div className="progress-track">
@@ -234,8 +233,9 @@ const App = () => {
             /* --- RESULTS STATE --- */
             <div>
               <div className="results-header-video">
+                {/* Hosted Video: ARYA AI Eyes Loop */}
                 <video
-                  src="/arya_eyes_loop.mp4" 
+                  src="https://2rjltiresrygcfqg.public.blob.vercel-storage.com/arya_eyes_loop.mp4" 
                   poster="/arya_poster.jpg"
                   className="loader-video"
                   autoPlay loop muted playsInline preload="auto"
