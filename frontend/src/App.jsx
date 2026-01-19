@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Upload, Play, Pause, Download, Music, X, Mic, Layers, Wand2, Sparkles } from 'lucide-react';
 import './App.css';
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 const App = () => {
   // Application State
@@ -220,6 +221,8 @@ const App = () => {
                      className="loader-video"
                      autoPlay loop muted playsInline preload="auto"
                    />
+                   {/* --- THE SCANNER LINE (RESTORED) --- */}
+                   <div className="scan-line"></div>
                </div>
                
                <h3 className="status-text">Processing Audio...</h3>
@@ -240,6 +243,8 @@ const App = () => {
                   className="loader-video"
                   autoPlay loop muted playsInline preload="auto"
                 />
+                 {/* Optional: Add scan line here too if desired, just copy the div above */}
+                 <div className="scan-line"></div>
               </div>
 
               <div className="results-top-bar">
