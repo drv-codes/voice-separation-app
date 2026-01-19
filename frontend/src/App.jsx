@@ -4,9 +4,7 @@ import './App.css';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-
 const App = () => {
-  // Application State
   const [mode, setMode] = useState('speech');
   const [file, setFile] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -14,7 +12,6 @@ const App = () => {
   const [results, setResults] = useState(null);
   const [error, setError] = useState(null);
 
-  // Audio Player State
   const [playingTrack, setPlayingTrack] = useState(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -22,7 +19,6 @@ const App = () => {
   const audioRef = useRef(new Audio());
   const [isDragOver, setIsDragOver] = useState(false);
 
-  // Audio Event Listeners
   useEffect(() => {
     const audio = audioRef.current;
     const updateTime = () => setCurrentTime(audio.currentTime);
@@ -40,7 +36,6 @@ const App = () => {
     };
   }, []);
 
-  // Stop audio on mode change or new result
   useEffect(() => { stopAudio(); }, [results, mode]);
 
   const stopAudio = () => {
@@ -90,7 +85,6 @@ const App = () => {
     setError(null);
     stopAudio();
 
-    // Simulated progress bar for UX feedback
     const interval = setInterval(() => {
       setProgress(p => (p >= 90 ? 90 : p + 5));
     }, mode === 'music' ? 400 : 250);
@@ -114,7 +108,6 @@ const App = () => {
       clearInterval(interval);
       setProgress(100);
       
-      // Short delay to allow progress bar to fill
       setTimeout(() => {
         setResults(data);
         setIsProcessing(false);
@@ -134,7 +127,6 @@ const App = () => {
 
   return (
     <div className="app-container">
-      {/* NAVIGATION */}
       <nav>
         <div className="max-w-container nav-content">
           <div className="brand-section">
@@ -149,7 +141,6 @@ const App = () => {
 
       <main className="max-w-container">
         
-        {/* HERO HEADER */}
         <div className="hero-section">
           <h1 className="hero-title">
             {mode === 'music' ? 'Separate Music' : mode === 'clean' ? 'Enhance Audio' : 'Isolate Voices'} 
@@ -168,11 +159,9 @@ const App = () => {
 
         {error && <div className="error-msg">⚠️ {error}</div>}
 
-        {/* MAIN GLASS INTERFACE */}
         <div className="glass-panel">
           
           {!file ? (
-            /* --- UPLOAD STATE --- */
             <div 
               className="upload-area"
               onClick={() => document.getElementById('file-input').click()}
@@ -211,17 +200,15 @@ const App = () => {
               </div>
             </div>
           ) : !results ? (
-            /* --- PROCESSING STATE --- */
             <div className="processing-state">
                <div className="loader-video-wrapper">
-                   {/* Hosted Video: ARYA AI Loader */}
                    <video
                      src="https://2rjltiresrygcfqg.public.blob.vercel-storage.com/arya_img.mp4"
                      poster="/arya_poster.jpg"
                      className="loader-video"
                      autoPlay loop muted playsInline preload="auto"
                    />
-                   {/* --- THE SCANNER LINE (RESTORED) --- */}
+                   {/* SCANNER LINE: Only active here during processing */}
                    <div className="scan-line"></div>
                </div>
                
@@ -233,18 +220,15 @@ const App = () => {
                </div>
             </div>
           ) : (
-            /* --- RESULTS STATE --- */
             <div>
               <div className="results-header-video">
-                {/* Hosted Video: ARYA AI Eyes Loop */}
                 <video
                   src="https://2rjltiresrygcfqg.public.blob.vercel-storage.com/arya_eyes_loop.mp4" 
                   poster="/arya_poster.jpg"
                   className="loader-video"
                   autoPlay loop muted playsInline preload="auto"
                 />
-                 {/* Optional: Add scan line here too if desired, just copy the div above */}
-                 <div className="scan-line"></div>
+                {/* SCANNER REMOVED FROM HERE */}
               </div>
 
               <div className="results-top-bar">
@@ -300,7 +284,6 @@ const App = () => {
           )}
         </div>
 
-        {/* MODE SWITCHER */}
         <div className="features-grid">
           <div className={`feature-card ${mode === 'speech' ? 'is-active' : ''}`} onClick={() => switchMode('speech')}>
             <Mic size={36} className="feature-icon" />
